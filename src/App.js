@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import "./sass/App.scss";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { GlobalProvider } from "./contexts/GlobalContext";
+import { ScheduleProvider } from "./contexts/ScheduleContext";
+import { OriginalWorkerProvider } from "./contexts/OriginalWorkerContext";
+import { WorkerProvider } from "./contexts/WorkerContext";
+import NavBar from "./components/navbar/Navbar";
+import Login from "./pages/Login";
+import OneMonthOverview from "./pages/OneMonthOverview";
+import SixMonthsOverview from "./pages/SixMonthsOverview";
+import UserSettings from "./pages/UserSettings";
+import { AuthenticationProvider } from "./contexts/AuthenticationContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthenticationProvider>
+      <GlobalProvider>
+        <OriginalWorkerProvider>
+          <WorkerProvider>
+            <ScheduleProvider>
+              <BrowserRouter>
+                <NavBar />
+                <Routes>
+                  <Route path="/" element={<Login />} />
+                  <Route
+                    path="/oneMonthSchedule"
+                    element={<OneMonthOverview />}
+                  />
+                  <Route
+                    path="/sixMonthSchedule"
+                    element={<SixMonthsOverview />}
+                  />
+                  <Route path="/userSettings" element={<UserSettings />} />
+                </Routes>
+              </BrowserRouter>
+            </ScheduleProvider>
+          </WorkerProvider>
+        </OriginalWorkerProvider>
+      </GlobalProvider>
+    </AuthenticationProvider>
   );
 }
 
