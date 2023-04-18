@@ -1,0 +1,49 @@
+@import "./variables";
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: #fefefe;
+  color: #1e3867;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+h1 {
+  font-size: 2.8em;
+  @media only screen and (max-width: $media-XS) {
+    font-size: 2.2em;
+  }
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  text-align: center;
+  font-size: 1.5em;
+  & a {
+    color: inherit;
+  }
+}
