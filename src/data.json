@@ -1,0 +1,12 @@
+{
+  "calenderViews": [
+    {
+      "name": "Månadskalender",
+      "link": "oneMonthSchedule"
+    },
+    {
+      "name": "Översiktskalender",
+      "link": "sixMonthSchedule"
+    }
+  ]
+}
