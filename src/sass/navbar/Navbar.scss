@@ -1,0 +1,65 @@
+@import "../variables";
+@import "../mixin";
+@import "./MenuIcons.scss";
+@import "./MenuList.scss";
+
+.fixedHeader {
+  z-index: 10;
+  top: 0;
+  width: 100%;
+
+  & .relativeHeader {
+    @include blueBackgroundColor;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 32px;
+    color: $white;
+
+    @media only screen and (max-width: $media-XS) {
+      padding: 24px 16px;
+    }
+    & .navIcons {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+
+      &_menu {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+    & .companyLogo {
+      display: flex;
+      cursor: pointer;
+
+      @media only screen and (max-width: $media-XS) {
+        max-width: 220px;
+      }
+    }
+
+    & .userSettingsIcon {
+      display: flex;
+      cursor: pointer;
+      &_icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 32px;
+        display: flex;
+        font-size: 2.6em;
+        min-width: 41.69px;
+        transition: all 700ms ease-in-out;
+
+        &:hover {
+          transform: translate(0, -50%) rotate(180deg);
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
