@@ -1,0 +1,20 @@
+.menuIcons {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transform: translate((0, -50%)) rotate(-45deg);
+  transition: all 700ms ease-in-out;
+  cursor: pointer;
+  font-size: 3em;
+  &.visible {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    transform: translate((0, -50%)) rotate(0);
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
