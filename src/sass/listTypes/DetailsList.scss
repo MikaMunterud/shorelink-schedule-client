@@ -1,0 +1,67 @@
+@import "../variables";
+
+.menuDetails {
+  display: flex;
+  transition: all 700ms ease-in-out;
+  width: 100%;
+  @media only screen and (max-width: $media-XS) {
+    width: fit-content;
+  }
+  &_summary {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 8px;
+    @media only screen and (max-width: $media-XS) {
+      justify-content: center;
+    }
+
+    &::marker {
+      content: none;
+    }
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:hover > .summaryArrow {
+      margin-left: 18px;
+      @media only screen and (max-width: $media-XS) {
+        transform: translateX(calc(100% + 20px));
+      }
+    }
+
+    & .summaryArrow {
+      display: inline-flex;
+      transition: 0.4s;
+      margin-top: 3px;
+      margin-left: 12px;
+      font-size: 2em;
+      @media only screen and (max-width: $media-XS) {
+        position: absolute;
+        right: 0;
+        transform: translate(calc(100% + 16px), 0);
+      }
+    }
+  }
+  &[open] .summaryArrow {
+    transform: rotate(90deg);
+    margin-left: 12px;
+    @media only screen and (max-width: $media-XS) {
+      transform: translate(calc(100% + 16px)) rotate(90deg);
+    }
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-left: 16px;
+    font-size: 1.8em;
+    list-style: none;
+    @media only screen and (max-width: $media-XS) {
+      margin: 0;
+    }
+  }
+}
