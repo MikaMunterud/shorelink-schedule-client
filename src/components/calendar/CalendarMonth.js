@@ -2,9 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import { isPublicHoliday } from "swedish-holidays";
 import moment from "moment";
 import "moment/locale/sv";
-import "../sass/Calendar.scss";
-import { GlobalContext } from "../contexts/GlobalContext";
-import { WorkerContext } from "../contexts/WorkerContext";
+import { GlobalContext } from "../../contexts/GlobalContext";
+import { WorkerContext } from "../../contexts/WorkerContext";
 
 export default function CalendarMonth({ month, heading, overView }) {
   const [daysInMonth, setDaysInMonth] = useState([]);

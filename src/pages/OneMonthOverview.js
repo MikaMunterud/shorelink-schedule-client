@@ -1,11 +1,11 @@
-import CalendarMonth from "../components/CalendarMonth";
+import CalendarMonth from "../components/calendar/CalendarMonth";
 import moment from "moment";
 import "moment/locale/sv";
-import Heading from "../components/Heading";
-import Nav from "../components/Nav";
+import CalendarFilter from "../components/calendar/CalendarFilter";
 import { useContext, useState } from "react";
 import { AuthenticationContext } from "../contexts/AuthenticationContext";
 import NotLoggedIn from "../components/NotLoggedIn";
+import CalendarHeading from "../components/calendar/CalendarHeading";
 
 export default function OneMonthOverview() {
   const [currentMonth, setCurrentMonth] = useState(moment());
@@ -19,8 +19,11 @@ export default function OneMonthOverview() {
 
   return (
     <section className="mainSection">
-      <Heading currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} />
-      <Nav
+      <CalendarHeading
+        currentMonth={currentMonth}
+        setCurrentMonth={setCurrentMonth}
+      />
+      <CalendarFilter
         currentDate={currentMonth}
         setCurrentDate={setCurrentMonth}
         overView={false}

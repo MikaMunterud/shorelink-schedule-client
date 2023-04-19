@@ -1,0 +1,26 @@
+.monthOverview {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  width: 100%;
+
+  @media only screen and (max-width: $media-XS) {
+    padding: 0 0 0 24px;
+    gap: 32px;
+  }
+
+  & .singleMonth {
+    border-right: 1.5px solid $brown;
+    border-left: 1.5px solid $brown;
+    @media only screen and (max-width: $media-XS) {
+      border-right: 2.5px solid $brown;
+      border-left: none;
+    }
+    &.first {
+      border-left: 2.5px solid $brown;
+    }
+    &.last {
+      border-right: 2.5px solid $brown;
+    }
+  }
+}

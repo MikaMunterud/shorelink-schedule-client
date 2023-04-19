@@ -1,0 +1,24 @@
+.calendarHeading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  @media only screen and (max-width: $media-XS) {
+    gap: 0;
+    justify-content: space-around;
+  }
+  &.overView {
+    justify-content: space-around;
+    text-align: center;
+  }
+  & .calendarArrow {
+    display: flex;
+    font-size: 2.8em;
+    cursor: pointer;
+    min-width: 30px;
+    @media only screen and (max-width: $media-XS) {
+      font-size: 3em;
+    }
+  }
+}

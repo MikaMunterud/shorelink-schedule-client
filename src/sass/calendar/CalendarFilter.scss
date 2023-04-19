@@ -1,0 +1,25 @@
+.calendarFilter {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  z-index: 6;
+  justify-content: flex-end;
+  width: 100%;
+  @media only screen and (max-width: $media-XS) {
+    flex-direction: column;
+    gap: 8px;
+  }
+  &_row {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    @media only screen and (max-width: $media-XS) {
+      justify-content: space-between;
+    }
+    &.overView {
+      justify-content: flex-end;
+    }
+  }
+}

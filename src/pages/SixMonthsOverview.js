@@ -1,24 +1,16 @@
-import CalendarMonth from "../components/CalendarMonth";
+import CalendarMonth from "../components/calendar/CalendarMonth";
 import moment from "moment";
 import "moment/locale/sv";
-import Nav from "../components/Nav";
+import CalendarFilter from "../components/calendar/CalendarFilter";
 import { useContext, useState } from "react";
 import { AuthenticationContext } from "../contexts/AuthenticationContext";
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import NotLoggedIn from "../components/NotLoggedIn";
+import CalendarHeadingOverview from "../components/calendar/CalendarHeadingOverview";
 
 export default function SixMonthsOverview() {
   const [currentDate, setCurrentDate] = useState(moment().startOf("year"));
   const array = [0, 1, 2, 3, 4, 5];
   const { isLoggedIn } = useContext(AuthenticationContext);
-
-  function handleNextSixMonths() {
-    setCurrentDate(currentDate.clone().add(6, "months"));
-  }
-
-  function handlePreviousSixMonths() {
-    setCurrentDate(currentDate.clone().subtract(6, "months"));
-  }
 
   moment.locale("sv");
 
@@ -28,33 +20,16 @@ export default function SixMonthsOverview() {
 
   return (
     <main className="mainSection overview">
-      <div className="heading overView">
-        <MdKeyboardArrowLeft
-          className="calendarArrow"
-          onClick={handlePreviousSixMonths}
-        />
+      <CalendarHeadingOverview
+        currentDate={currentDate}
+        setCurrentDate={setCurrentDate}
+      />
 
-        <h1 className="calendarOverview_currentMonth months">
-          {currentDate.format("MMM").toUpperCase()} {" – "}
-          {currentDate
-            .clone()
-            .add(5, "months")
-            .format("MMM")
-            .toUpperCase()}{" "}
-          {currentDate.format("YYYY")}
-        </h1>
-
-        <MdKeyboardArrowRight
-          className="calendarArrow"
-          onClick={handleNextSixMonths}
-        />
-      </div>
-      <Nav
+      <CalendarFilter
         currentDate={currentDate}
         setCurrentDate={setCurrentDate}
         overView={true}
       />
-
       <div className="monthOverview">
         {array.map(function (index) {
           const monthDate = currentDate.clone().add(index, "months");

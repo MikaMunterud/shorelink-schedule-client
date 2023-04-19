@@ -4,3 +4,59 @@
   background-color: $blue;
   color: $white;
 }
+
+@mixin blurredBackground {
+  background-color: #fefefe9f;
+  backdrop-filter: blur(24px);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+@mixin gridLayout {
+  display: grid;
+  text-align: center;
+  width: 100%;
+  max-width: 1000px;
+  grid-template-columns: 80px repeat(6, minmax(0, 1fr));
+
+  &.overView {
+    grid-template-columns: 70px repeat(6, minmax(0, 1fr));
+  }
+
+  &.total5 {
+    grid-template-columns: 80px repeat(5, minmax(0, 1fr));
+    max-width: 680px;
+    &.overView {
+      grid-template-columns: 70px repeat(5, minmax(0, 1fr));
+    }
+  }
+  &.total4 {
+    grid-template-columns: 80px repeat(4, minmax(0, 1fr));
+    max-width: 560px;
+    &.overView {
+      grid-template-columns: 70px repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  &.total3 {
+    grid-template-columns: 80px repeat(3, minmax(0, 1fr));
+    max-width: 440px;
+    &.overView {
+      grid-template-columns: 70px repeat(3, minmax(0, 1fr));
+    }
+  }
+  &.total2 {
+    grid-template-columns: 80px repeat(2, minmax(0, 1fr));
+    max-width: 320px;
+    &.overView {
+      grid-template-columns: 70px repeat(2, minmax(0, 1fr));
+    }
+  }
+  &.total1 {
+    grid-template-columns: 80px repeat(1, minmax(0, 1fr));
+    max-width: 200px;
+    &.overView {
+      grid-template-columns: 70px repeat(1, minmax(0, 1fr));
+    }
+  }
+}
