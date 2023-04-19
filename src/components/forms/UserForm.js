@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
-import "../sass/UserForm.scss";
 
 export default function UserForm({
   heading,
@@ -21,11 +20,11 @@ export default function UserForm({
   return (
     <form className="form" onSubmit={handleSubmit}>
       <h2 className="form_heading">{heading}</h2>
-      <label htmlFor="username">Username:</label>
+      <label htmlFor="username">Användarnamn:</label>
       <input
         id="username"
         type="text"
-        placeholder="Username"
+        placeholder="Användarnamn"
         autoComplete="username"
         value={username}
         onChange={function (event) {
@@ -34,7 +33,7 @@ export default function UserForm({
         required
       />
       <div className="inputPasswordRow">
-        <label htmlFor="password1">Password:</label>
+        <label htmlFor="password1">Lösenord:</label>
 
         {inputType1 === "password" ? (
           <BsFillEyeFill
@@ -54,7 +53,7 @@ export default function UserForm({
       <input
         id="password1"
         type={inputType1}
-        placeholder="Password"
+        placeholder="Lösenord"
         autoComplete={autoCompletePassword}
         value={password1}
         onChange={function (event) {
@@ -66,7 +65,7 @@ export default function UserForm({
       {passwordAuthentication && (
         <>
           <div className="inputPasswordRow">
-            <label htmlFor="password2">Confirm Password:</label>
+            <label htmlFor="password2">Bekräfta lösenord:</label>
 
             {inputType2 === "password" ? (
               <BsFillEyeFill
@@ -86,7 +85,7 @@ export default function UserForm({
           <input
             id="password2"
             type={inputType2}
-            placeholder="Confirm password"
+            placeholder="Bekräfta lösenord"
             autoComplete={autoCompletePassword}
             value={password2}
             onChange={function (event) {
