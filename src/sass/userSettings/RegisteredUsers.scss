@@ -1,0 +1,27 @@
+.registeredUsers {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 32px;
+  @media only screen and (max-width: $media-XS) {
+    padding: 0 32px;
+  }
+  &_user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+
+    &_icons {
+      display: inline-flex;
+      gap: 16px;
+      & svg {
+        font-size: 1.8em;
+        cursor: pointer;
+      }
+    }
+  }
+}
