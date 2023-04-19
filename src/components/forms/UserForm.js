@@ -26,6 +26,8 @@ export default function UserForm({
         type="text"
         placeholder="Användarnamn"
         autoComplete="username"
+        minLength={3}
+        maxLength={50}
         value={username}
         onChange={function (event) {
           setUsername(event.target.value);
@@ -55,6 +57,8 @@ export default function UserForm({
         type={inputType1}
         placeholder="Lösenord"
         autoComplete={autoCompletePassword}
+        minLength={6}
+        maxLength={50}
         value={password1}
         onChange={function (event) {
           setPassword1(event.target.value);
@@ -87,6 +91,8 @@ export default function UserForm({
             type={inputType2}
             placeholder="Bekräfta lösenord"
             autoComplete={autoCompletePassword}
+            minLength={6}
+            maxLength={50}
             value={password2}
             onChange={function (event) {
               setPassword2(event.target.value);
