@@ -1,0 +1,31 @@
+.currentEmployeeList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  margin: 0 0 32px 16px;
+  @media only screen and (max-width: $media-XS) {
+    align-content: space-around;
+    margin: 0 0 32px;
+  }
+  &_employee {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+
+    &_name {
+      display: flex;
+      gap: 8px;
+      text-align: start;
+      width: 250px;
+      @media only screen and (max-width: $media-XS) {
+        width: fit-content;
+      }
+    }
+    &_number {
+      display: inline-flex;
+      width: 25px;
+    }
+  }
+}
