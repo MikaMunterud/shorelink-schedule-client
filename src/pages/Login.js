@@ -1,18 +1,18 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import UserForm from "../components/UserForm";
-import Message from "../components/messages/Message";
+import UserForm from "../components/forms/UserForm";
 import { AuthenticationContext } from "../contexts/AuthenticationContext";
+import Swal from "sweetalert2";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
   const { setIsLoggedIn } = useContext(AuthenticationContext);
   const navigate = useNavigate();
 
   async function login(event) {
     event.preventDefault();
+
     const user = { username, password };
 
     try {
@@ -27,27 +27,36 @@ export default function Login() {
           body: JSON.stringify(user),
         }
       );
+      const responseMessage = await response.text();
 
       if (response.status === 400) {
-        const serverMessage = await response.text();
-        return setMessage(serverMessage);
-      }
-      if (response.status === 500) {
-        return setMessage("Something went wrong, internal server error!");
+        Swal.fire({
+          icon: "error",
+          text: responseMessage,
+        });
+        return;
       }
 
       if (response.status === 404) {
-        return setMessage(
-          "Invalid credentials, please double check the username and password!"
-        );
+        Swal.fire({
+          icon: "error",
+          text: responseMessage,
+        });
+        return;
       }
 
       if (response.status === 200) {
+        localStorage.setItem("loggedInUser", responseMessage);
         setIsLoggedIn(true);
         navigate("/oneMonthSchedule");
+        return;
       }
     } catch (FetchError) {
-      return setMessage("Something went wrong, failed to connect to server!");
+      Swal.fire({
+        icon: "error",
+        text: FetchError,
+      });
+      return;
     }
   }
 
@@ -63,13 +72,6 @@ export default function Login() {
         autoCompletePassword={"current-password"}
         buttonValue={"Login"}
       />
-      {message && (
-        <Message
-          className="homepageMessage"
-          message={message}
-          setMessage={setMessage}
-        />
-      )}
     </section>
   );
 }
