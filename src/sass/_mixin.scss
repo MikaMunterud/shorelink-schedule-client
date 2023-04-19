@@ -12,6 +12,22 @@
   border-bottom-right-radius: 16px;
 }
 
+@mixin buttonEffect {
+  background-color: $blue;
+  color: $white;
+  font-size: 1.3em;
+  padding: 2px 10px;
+  border-radius: 8px;
+
+  &:hover {
+    opacity: 0.7;
+  }
+  &:active {
+    transform: translateY(1px);
+    scale: 0.99;
+  }
+}
+
 @mixin gridLayout {
   display: grid;
   text-align: center;
