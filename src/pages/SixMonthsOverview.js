@@ -4,7 +4,7 @@ import "moment/locale/sv";
 import CalendarFilter from "../components/calendar/CalendarFilter";
 import { useContext, useState } from "react";
 import { AuthenticationContext } from "../contexts/AuthenticationContext";
-import NotLoggedIn from "../components/NotLoggedIn";
+import NotLoggedIn from "../components/messages/NotLoggedIn";
 import CalendarHeadingOverview from "../components/calendar/CalendarHeadingOverview";
 
 export default function SixMonthsOverview() {
