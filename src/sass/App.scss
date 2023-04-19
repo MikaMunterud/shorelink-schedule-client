@@ -1,6 +1,10 @@
-@import "./buttons/ButtonIcon.scss";
+@import "./variables";
+@import "./mixin";
+
+@import "./buttons/Buttons.scss";
 @import "./listTypes/DetailsList.scss";
 @import "./calendar/Calendar.scss";
+@import "./forms/UserForm.scss";
 
 #root {
   display: flex;
@@ -15,7 +19,11 @@
     flex-direction: column;
     gap: 16px;
     margin-bottom: 64px;
-    padding: 0 32px;
+    padding: 0 32px 64px;
     width: 100%;
+  }
+  & #notLoggedInMessage {
+    align-items: center !important;
+    text-align: center;
   }
 }
