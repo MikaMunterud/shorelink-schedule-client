@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserForm from "../components/UserForm";
-import Message from "../components/Message";
+import Message from "../components/messages/Message";
 import { AuthenticationContext } from "../contexts/AuthenticationContext";
 
 export default function Login() {
