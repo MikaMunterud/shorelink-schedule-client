@@ -13,13 +13,16 @@ export function AuthenticationProvider({ children }) {
           credentials: "include",
         });
 
+        if (response.status === 401) {
+          setIsLoggedIn(false);
+        }
+
         if (response.status === 400) {
           setIsLoggedIn(false);
         }
 
         if (response.status === 200) {
-          const serverObject = await response.text();
-          setIsLoggedIn(serverObject);
+          setIsLoggedIn(true);
         }
       } catch (FetchError) {
         setIsLoggedIn(false);
