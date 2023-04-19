@@ -20,6 +20,11 @@ export function GlobalProvider({ children }) {
         if (response.status === 404) {
           return setSchedule([]);
         }
+
+        if (response.status === 401) {
+          return setSchedule([]);
+        }
+
         if (response.status === 200) {
           const serverObject = await response.json();
           setSchedule(serverObject);
