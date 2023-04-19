@@ -8,9 +8,9 @@
   gap: 6px;
   background-color: #1e3867;
   backdrop-filter: blur(24px);
-  width: 400px;
+  width: 450px;
   @media only screen and (max-width: 650px) {
-    width: calc(100% - 64px);
+    width: 100%;
   }
   &_heading {
     font-family: "Arvo", serif;
@@ -54,6 +54,7 @@
 
     & svg {
       font-size: 1.4em;
+      color: $white;
       cursor: pointer;
       margin: 0 4px;
     }
