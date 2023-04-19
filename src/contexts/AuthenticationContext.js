@@ -22,6 +22,9 @@ export function AuthenticationProvider({ children }) {
         }
 
         if (response.status === 200) {
+          const username = await response.text();
+
+          localStorage.setItem("loggedInUser", username);
           setIsLoggedIn(true);
         }
       } catch (FetchError) {
