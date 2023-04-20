@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext } from "react";
 import { GlobalContext } from "./GlobalContext";
 
 export const OriginalWorkerContext = createContext();
