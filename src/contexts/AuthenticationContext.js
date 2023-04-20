@@ -37,9 +37,11 @@ export function AuthenticationProvider({ children }) {
   }, []);
 
   if (loading) {
-    <section className="mainSection">
-      <h3>Laddar...</h3>
-    </section>;
+    return (
+      <section className="mainSection">
+        <h3>Laddar...</h3>
+      </section>
+    );
   }
 
   return (
