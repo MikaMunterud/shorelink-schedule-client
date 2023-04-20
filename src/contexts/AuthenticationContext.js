@@ -14,10 +14,12 @@ export function AuthenticationProvider({ children }) {
         });
 
         if (response.status === 401) {
+          localStorage.removeItem("loggedInUser");
           setIsLoggedIn(false);
         }
 
         if (response.status === 400) {
+          localStorage.removeItem("loggedInUser");
           setIsLoggedIn(false);
         }
 
@@ -28,6 +30,7 @@ export function AuthenticationProvider({ children }) {
           setIsLoggedIn(true);
         }
       } catch (FetchError) {
+        localStorage.removeItem("loggedInUser");
         setIsLoggedIn(false);
       }
 
