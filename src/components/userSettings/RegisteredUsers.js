@@ -184,7 +184,7 @@ export default function RegisteredUsers({ users, loggedInUsername }) {
           }
 
           if (response.status === 200) {
-            Swal.fire({
+            await Swal.fire({
               icon: "success",
               text: responseMessage,
             });
@@ -192,6 +192,7 @@ export default function RegisteredUsers({ users, loggedInUsername }) {
               navigate("/");
               setIsLoggedIn(false);
             }
+            window.location.reload();
             return;
           }
         } catch (FetchError) {

@@ -15,47 +15,44 @@ export default function UserSettings() {
   const [loggedInUsername, setLoggedInUsername] = useState();
   const [users, setUsers] = useState([]);
 
-  useEffect(
-    function () {
-      async function getUsers() {
-        try {
-          const response = await fetch(
-            "http://localhost:5050/authentication/users",
-            {
-              method: "GET",
-              credentials: "include",
-            }
-          );
-
-          if (response.status === 400) {
-            return setIsLoggedIn(false);
+  useEffect(function () {
+    async function getUsers() {
+      try {
+        const response = await fetch(
+          "http://localhost:5050/authentication/users",
+          {
+            method: "GET",
+            credentials: "include",
           }
+        );
 
-          if (response.status === 401) {
-            return setIsLoggedIn(false);
-          }
-
-          if (response.status === 404) {
-            return setIsLoggedIn(true);
-          }
-
-          if (response.status === 200) {
-            const serverObject = await response.json();
-            setUsers(serverObject);
-            setIsLoggedIn(true);
-            if (localStorage.getItem("loggedInUser")) {
-              setLoggedInUsername(localStorage.getItem("loggedInUser"));
-            }
-            return;
-          }
-        } catch (FetchError) {
+        if (response.status === 400) {
           return setIsLoggedIn(false);
         }
+
+        if (response.status === 401) {
+          return setIsLoggedIn(false);
+        }
+
+        if (response.status === 404) {
+          return setIsLoggedIn(true);
+        }
+
+        if (response.status === 200) {
+          const serverObject = await response.json();
+          setUsers(serverObject);
+          setIsLoggedIn(true);
+          if (localStorage.getItem("loggedInUser")) {
+            setLoggedInUsername(localStorage.getItem("loggedInUser"));
+          }
+          return;
+        }
+      } catch (FetchError) {
+        return setIsLoggedIn(false);
       }
-      getUsers();
-    },
-    [users, setIsLoggedIn]
-  );
+    }
+    getUsers();
+  }, []);
 
   async function register(event) {
     event.preventDefault();
@@ -114,13 +111,14 @@ export default function UserSettings() {
       }
 
       if (response.status === 201) {
-        Swal.fire({
+        await Swal.fire({
           icon: "success",
           text: responseMessage,
         });
         setUsername("");
         setPassword1("");
         setPassword2("");
+        window.location.reload();
         return;
       }
     } catch (FetchError) {
