@@ -7,7 +7,6 @@ import RegisteredUsers from "../components/userSettings/RegisteredUsers";
 import "../sass/userSettings/UserSettings.scss";
 import Swal from "sweetalert2";
 import { getUsers } from "../functions/getUsers";
-
 export default function UserSettings() {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthenticationContext);
   const [username, setUsername] = useState("");
@@ -54,7 +53,7 @@ export default function UserSettings() {
 
     try {
       const response = await fetch(
-        "https://shorelink-schedule.onrender.com/authentication/register",
+        `${process.env.REACT_APP_BASE_URL}/authentication/register`,
         {
           method: "POST",
           headers: {

@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 export const AuthenticationContext = createContext();
-
 export function AuthenticationProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState();
   const [loading, setLoading] = useState(true);
@@ -9,7 +8,7 @@ export function AuthenticationProvider({ children }) {
     async function checkLoggedIn() {
       try {
         const response = await fetch(
-          "https://shorelink-schedule.onrender.com/authentication/",
+          `${process.env.REACT_APP_BASE_URL}/authentication/`,
           {
             method: "GET",
             credentials: "include",
@@ -28,7 +27,6 @@ export function AuthenticationProvider({ children }) {
 
         if (response.status === 200) {
           const username = await response.text();
-
           localStorage.setItem("loggedInUser", username);
           setIsLoggedIn(true);
         }

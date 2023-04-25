@@ -6,7 +6,6 @@ import { MdLogout } from "react-icons/md";
 import { useContext } from "react";
 import { AuthenticationContext } from "../../contexts/AuthenticationContext";
 import Swal from "sweetalert2";
-
 export default function MenuList({ menuList, searchBox, hideMenu }) {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthenticationContext);
   const navigate = useNavigate();
@@ -24,7 +23,7 @@ export default function MenuList({ menuList, searchBox, hideMenu }) {
     if (confirmLogout.isConfirmed) {
       try {
         const response = await fetch(
-          "https://shorelink-schedule.onrender.com/authentication/logout",
+          `${process.env.REACT_APP_BASE_URL}/authentication/logout`,
           {
             method: "GET",
             credentials: "include",

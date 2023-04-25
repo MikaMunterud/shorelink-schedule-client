@@ -5,7 +5,6 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { getUsers } from "../../functions/getUsers";
-
 export default function RegisteredUsers({
   users,
   setUsers,
@@ -51,7 +50,7 @@ export default function RegisteredUsers({
 
         try {
           const response = await fetch(
-            "https://shorelink-schedule.onrender.com/authentication/editPassword",
+            `${process.env.REACT_APP_BASE_URL}/authentication/editPassword`,
             {
               method: "PATCH",
               headers: {
@@ -155,7 +154,7 @@ export default function RegisteredUsers({
 
         try {
           const response = await fetch(
-            "https://shorelink-schedule.onrender.com/authentication/deleteUser",
+            `${process.env.REACT_APP_BASE_URL}/authentication/deleteUser`,
             {
               method: "DELETE",
               headers: {

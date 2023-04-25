@@ -3,7 +3,6 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 import Button from "../buttons/Button";
 import Swal from "sweetalert2";
 import { AuthenticationContext } from "../../contexts/AuthenticationContext";
-
 export default function EmployeeList() {
   const { setIsLoggedIn } = useContext(AuthenticationContext);
   const schedule = useContext(GlobalContext);
@@ -45,7 +44,7 @@ export default function EmployeeList() {
 
         try {
           const response = await fetch(
-            "https://shorelink-schedule.onrender.com/schedule",
+            `${process.env.REACT_APP_BASE_URL}/schedule`,
             {
               method: "PATCH",
               headers: {

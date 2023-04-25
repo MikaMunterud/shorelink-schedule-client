@@ -1,7 +1,7 @@
 export async function getUsers() {
   try {
     const response = await fetch(
-      "https://shorelink-schedule.onrender.com/authentication/users",
+      `${process.env.REACT_APP_BASE_URL}/authentication/users`,
       {
         method: "GET",
         credentials: "include",

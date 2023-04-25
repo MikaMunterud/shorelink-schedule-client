@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import UserForm from "../components/forms/UserForm";
 import { AuthenticationContext } from "../contexts/AuthenticationContext";
 import Swal from "sweetalert2";
-
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +16,7 @@ export default function Login() {
 
     try {
       const response = await fetch(
-        "https://shorelink-schedule.onrender.com/authentication/login",
+        `${process.env.REACT_APP_BASE_URL}/authentication/login`,
         {
           method: "POST",
           headers: {

@@ -1,7 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-
 export const GlobalContext = createContext();
-
 export function GlobalProvider({ children }) {
   const [schedule, setSchedule] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -10,7 +8,7 @@ export function GlobalProvider({ children }) {
     async function fetchSchedule() {
       try {
         const response = await fetch(
-          "https://shorelink-schedule.onrender.com/schedule",
+          `${process.env.REACT_APP_BASE_URL}/schedule`,
           {
             method: "GET",
             headers: {
