@@ -10,8 +10,11 @@ import OneMonthOverview from "./pages/OneMonthOverview";
 import SixMonthsOverview from "./pages/SixMonthsOverview";
 import UserSettings from "./pages/UserSettings";
 import { AuthenticationProvider } from "./contexts/AuthenticationContext";
+import { wakeUpServer } from "./functions/wakeUpServer";
 
 function App() {
+  wakeUpServer();
+
   return (
     <AuthenticationProvider>
       <GlobalProvider>
