@@ -17,7 +17,7 @@ export default function Login() {
 
     try {
       const response = await fetch(
-        "http://localhost:5050/authentication/login",
+        "https://shorelink-schedule.onrender.com/authentication/login",
         {
           method: "POST",
           headers: {

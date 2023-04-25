@@ -8,10 +8,13 @@ export function AuthenticationProvider({ children }) {
   useEffect(function () {
     async function checkLoggedIn() {
       try {
-        const response = await fetch("http://localhost:5050/authentication/", {
-          method: "GET",
-          credentials: "include",
-        });
+        const response = await fetch(
+          "https://shorelink-schedule.onrender.com/authentication/",
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
 
         if (response.status === 401) {
           localStorage.removeItem("loggedInUser");

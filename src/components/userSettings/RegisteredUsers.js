@@ -51,7 +51,7 @@ export default function RegisteredUsers({
 
         try {
           const response = await fetch(
-            "http://localhost:5050/authentication/editPassword",
+            "https://shorelink-schedule.onrender.com/authentication/editPassword",
             {
               method: "PATCH",
               headers: {
@@ -155,7 +155,7 @@ export default function RegisteredUsers({
 
         try {
           const response = await fetch(
-            "http://localhost:5050/authentication/deleteUser",
+            "https://shorelink-schedule.onrender.com/authentication/deleteUser",
             {
               method: "DELETE",
               headers: {

@@ -44,14 +44,17 @@ export default function EmployeeList() {
         };
 
         try {
-          const response = await fetch("http://localhost:5050/schedule", {
-            method: "PATCH",
-            headers: {
-              "content-type": "application/json",
-            },
-            credentials: "include",
-            body: JSON.stringify(responseBody),
-          });
+          const response = await fetch(
+            "https://shorelink-schedule.onrender.com/schedule",
+            {
+              method: "PATCH",
+              headers: {
+                "content-type": "application/json",
+              },
+              credentials: "include",
+              body: JSON.stringify(responseBody),
+            }
+          );
 
           const responseMessage = await response.text();
 

@@ -24,7 +24,7 @@ export default function MenuList({ menuList, searchBox, hideMenu }) {
     if (confirmLogout.isConfirmed) {
       try {
         const response = await fetch(
-          "http://localhost:5050/authentication/logout",
+          "https://shorelink-schedule.onrender.com/authentication/logout",
           {
             method: "GET",
             credentials: "include",

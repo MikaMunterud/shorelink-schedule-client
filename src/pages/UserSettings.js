@@ -54,7 +54,7 @@ export default function UserSettings() {
 
     try {
       const response = await fetch(
-        "http://localhost:5050/authentication/register",
+        "https://shorelink-schedule.onrender.com/authentication/register",
         {
           method: "POST",
           headers: {

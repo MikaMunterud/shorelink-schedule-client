@@ -9,13 +9,16 @@ export function GlobalProvider({ children }) {
   useEffect(function () {
     async function fetchSchedule() {
       try {
-        const response = await fetch("http://localhost:5050/schedule", {
-          method: "GET",
-          headers: {
-            "content-type": "application/json",
-          },
-          credentials: "include",
-        });
+        const response = await fetch(
+          "https://shorelink-schedule.onrender.com/schedule",
+          {
+            method: "GET",
+            headers: {
+              "content-type": "application/json",
+            },
+            credentials: "include",
+          }
+        );
 
         if (response.status === 404) {
           return setSchedule([]);

@@ -1,9 +1,12 @@
 export async function getUsers() {
   try {
-    const response = await fetch("http://localhost:5050/authentication/users", {
-      method: "GET",
-      credentials: "include",
-    });
+    const response = await fetch(
+      "https://shorelink-schedule.onrender.com/authentication/users",
+      {
+        method: "GET",
+        credentials: "include",
+      }
+    );
 
     if (response.status === 400) {
       return { loggedIn: false };
