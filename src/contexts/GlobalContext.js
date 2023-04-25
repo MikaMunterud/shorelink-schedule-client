@@ -22,6 +22,7 @@ export function GlobalProvider({ children }) {
         }
 
         if (response.status === 401) {
+          localStorage.removeItem("loggedInUser");
           return setSchedule([]);
         }
 
