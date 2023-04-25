@@ -4,8 +4,14 @@ import { AuthenticationContext } from "../../contexts/AuthenticationContext";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { getUsers } from "../../functions/getUsers";
 
-export default function RegisteredUsers({ users, loggedInUsername }) {
+export default function RegisteredUsers({
+  users,
+  setUsers,
+  loggedInUsername,
+  setLoggedInUsername,
+}) {
   const { setIsLoggedIn } = useContext(AuthenticationContext);
 
   const navigate = useNavigate();
@@ -59,6 +65,7 @@ export default function RegisteredUsers({ users, loggedInUsername }) {
           const responseMessage = await response.text();
 
           if (response.status === 401) {
+            localStorage.removeItem("loggedInUser");
             return setIsLoggedIn(false);
           }
 
@@ -165,6 +172,7 @@ export default function RegisteredUsers({ users, loggedInUsername }) {
           const responseMessage = await response.text();
 
           if (response.status === 401) {
+            localStorage.removeItem("loggedInUser");
             return setIsLoggedIn(false);
           }
 
@@ -192,7 +200,14 @@ export default function RegisteredUsers({ users, loggedInUsername }) {
               navigate("/");
               setIsLoggedIn(false);
             }
-            window.location.reload();
+
+            const { loggedIn, loggedInUser, usersList } = await getUsers();
+            await setIsLoggedIn(loggedIn);
+            if (loggedIn) {
+              setUsers(usersList);
+              setLoggedInUsername(loggedInUser);
+            }
+
             return;
           }
         } catch (FetchError) {
