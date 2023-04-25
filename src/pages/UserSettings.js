@@ -6,6 +6,7 @@ import EmployeeList from "../components/userSettings/EmployeeList";
 import RegisteredUsers from "../components/userSettings/RegisteredUsers";
 import "../sass/userSettings/UserSettings.scss";
 import Swal from "sweetalert2";
+import { getUsers } from "../functions/getUsers";
 
 export default function UserSettings() {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthenticationContext);
@@ -15,44 +16,20 @@ export default function UserSettings() {
   const [loggedInUsername, setLoggedInUsername] = useState();
   const [users, setUsers] = useState([]);
 
-  useEffect(function () {
-    async function getUsers() {
-      try {
-        const response = await fetch(
-          "http://localhost:5050/authentication/users",
-          {
-            method: "GET",
-            credentials: "include",
-          }
-        );
-
-        if (response.status === 400) {
-          return setIsLoggedIn(false);
+  useEffect(
+    function () {
+      async function fetchUsers() {
+        const { loggedIn, loggedInUser, usersList } = await getUsers();
+        await setIsLoggedIn(loggedIn);
+        if (loggedIn) {
+          setLoggedInUsername(loggedInUser);
+          setUsers(usersList);
         }
-
-        if (response.status === 401) {
-          return setIsLoggedIn(false);
-        }
-
-        if (response.status === 404) {
-          return setIsLoggedIn(true);
-        }
-
-        if (response.status === 200) {
-          const serverObject = await response.json();
-          setUsers(serverObject);
-          setIsLoggedIn(true);
-          if (localStorage.getItem("loggedInUser")) {
-            setLoggedInUsername(localStorage.getItem("loggedInUser"));
-          }
-          return;
-        }
-      } catch (FetchError) {
-        return setIsLoggedIn(false);
       }
-    }
-    getUsers();
-  }, []);
+      fetchUsers();
+    },
+    [setIsLoggedIn]
+  );
 
   async function register(event) {
     event.preventDefault();
@@ -118,7 +95,14 @@ export default function UserSettings() {
         setUsername("");
         setPassword1("");
         setPassword2("");
-        window.location.reload();
+
+        const { loggedIn, loggedInUser, usersList } = await getUsers();
+        await setIsLoggedIn(loggedIn);
+        if (loggedIn) {
+          setLoggedInUsername(loggedInUser);
+          setUsers(usersList);
+        }
+
         return;
       }
     } catch (FetchError) {
@@ -141,7 +125,12 @@ export default function UserSettings() {
       <EmployeeList />
 
       <h2 className="userSettings_heading">Registrerade användare</h2>
-      <RegisteredUsers users={users} loggedInUsername={loggedInUsername} />
+      <RegisteredUsers
+        users={users}
+        loggedInUsername={loggedInUsername}
+        setUsers={setUsers}
+        setLoggedInUsername={setLoggedInUsername}
+      />
 
       <UserForm
         heading={"Registrera användare"}
