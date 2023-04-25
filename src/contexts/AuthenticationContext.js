@@ -31,7 +31,7 @@ export function AuthenticationProvider({ children }) {
         }
       } catch (FetchError) {
         localStorage.removeItem("loggedInUser");
-        setIsLoggedIn(false);
+        setIsLoggedIn("serverError");
       }
 
       setLoading(false);
@@ -43,6 +43,24 @@ export function AuthenticationProvider({ children }) {
     return (
       <section className="mainSection">
         <h3>Laddar...</h3>
+      </section>
+    );
+  }
+
+  if (isLoggedIn === "serverError") {
+    return (
+      <section className="mainSection">
+        <h2 className="serverError">
+          Misslyckades att koppla upp till servern!
+        </h2>
+        <h3
+          className="serverError_refresh"
+          onClick={() => {
+            window.location.reload();
+          }}
+        >
+          Klicka här för att refresha sidan eller kom tillbaka lite senare!
+        </h3>
       </section>
     );
   }
