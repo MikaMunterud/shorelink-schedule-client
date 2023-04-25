@@ -31,32 +31,45 @@ export default function MenuList({ menuList, searchBox, hideMenu }) {
           }
         );
 
+        const responseMessage = await response.text();
+
         if (response.status === 400) {
-          setIsLoggedIn(false);
+          await Swal.fire({
+            icon: "error",
+            text: responseMessage,
+          });
+          return;
         }
 
         if (response.status === 401) {
+          localStorage.removeItem("loggedInUser");
           setIsLoggedIn(false);
+          return;
         }
 
         if (response.status === 200) {
-          const responseMessage = await response.text();
-          Swal.fire({
+          await Swal.fire({
             icon: "success",
             text: responseMessage,
           });
+          localStorage.removeItem("loggedInUser");
           navigate("/");
           setIsLoggedIn(false);
+          return;
         }
       } catch (FetchError) {
-        Swal.fire({
+        await Swal.fire({
           icon: "error",
           text: "Något gick fel, gick inte att ansluta till servern!",
         });
         setIsLoggedIn(false);
       }
     } else {
-      Swal.fire("Cancelled", `Utloggningen har cancellerats 🥳!`, "error");
+      await Swal.fire(
+        "Cancelled",
+        `Utloggningen har cancellerats 🥳!`,
+        "error"
+      );
       return;
     }
   }
