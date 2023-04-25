@@ -26,4 +26,13 @@
     align-items: center !important;
     text-align: center;
   }
+
+  & .serverError {
+    margin-top: 64px;
+    text-align: center;
+    &_refresh {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
 }
