@@ -11,8 +11,8 @@ export default function FilterButton({
   return (
     <button className={`button${className}`} onClick={handleClick}>
       {text}
-      <MdFilterAlt className={`filterIcon ${filter}`} />
-      <IoClose className={`filterIcon ${cross}`} />
+      <MdFilterAlt className={`filterIcon${filter}`} />
+      <IoClose className={`filterIcon${cross}`} />
     </button>
   );
 }

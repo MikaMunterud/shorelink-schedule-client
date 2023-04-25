@@ -10,19 +10,19 @@ export default function CalendarFilter({
   overView,
 }) {
   const [filterList, setFilterList] = useState("");
-  const [filter, setFilter] = useState("visible");
+  const [filter, setFilter] = useState(" visible");
   const [cross, setCross] = useState("");
 
   function toggleMenu(event) {
     event.preventDefault();
 
-    if (filter === "visible") {
+    if (filter === " visible") {
       setFilter("");
-      setCross("visible");
-      setFilterList("visible");
+      setCross(" visible");
+      setFilterList(" visible");
     } else {
       setCross("");
-      setFilter("visible");
+      setFilter(" visible");
       setFilterList("");
     }
   }
