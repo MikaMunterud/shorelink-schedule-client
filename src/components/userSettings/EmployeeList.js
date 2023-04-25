@@ -56,6 +56,7 @@ export default function EmployeeList() {
           const responseMessage = await response.text();
 
           if (response.status === 401) {
+            localStorage.removeItem("loggedInUser");
             return setIsLoggedIn(false);
           }
 
