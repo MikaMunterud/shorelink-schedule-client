@@ -4,6 +4,7 @@
   padding: 0 0 0 32px;
   margin-bottom: 32px;
   width: 100%;
+
   @media only screen and (max-width: $media-XS) {
     padding: 0;
   }
@@ -14,9 +15,13 @@
     align-self: center;
     align-items: center;
     width: 100%;
+    min-width: 100%;
 
     & .employees {
       @include gridLayout;
+      justify-content: space-between;
+      min-width: max-content;
+      justify-items: stretch;
     }
     & #currentDate {
       z-index: 6;
@@ -28,7 +33,7 @@
       position: relative;
       border-bottom: 1px solid;
       justify-content: space-between;
-      justify-items: center;
+      justify-items: stretch;
       min-width: max-content;
 
       &.sunday {

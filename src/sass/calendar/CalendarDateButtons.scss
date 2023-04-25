@@ -24,20 +24,19 @@
       position: absolute;
       top: 50%;
       display: flex;
-      transform: translateY(-50%);
       right: 0;
       font-size: 1.4em;
       transition: all 0.8s ease-in-out;
       cursor: pointer;
       opacity: 0;
       visibility: hidden;
-      transform: translate(0, rotate(-45deg));
+      transform: translate(0, -50%) rotate(-45deg);
 
       &.visible {
         opacity: 1;
         visibility: visible;
-        transform: translate(0, rotate(45deg));
-        width: fit-content;
+        transform: translate(0, -50%) rotate(0deg);
+        width: 40px;
       }
     }
   }
