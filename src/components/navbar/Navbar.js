@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MenuList from "./MenuList";
 import MenuIcons from "./MenuIcons";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../sass/navbar/Navbar.scss";
 import { MdOutlineSettings } from "react-icons/md";
 
@@ -62,12 +62,9 @@ export default function Navbar() {
           onClick={goToHomepage}
         />
         <div className="userSettingsIcon" onClick={hideMenu}>
-          <MdOutlineSettings
-            className="userSettingsIcon_icon"
-            onClick={function () {
-              redirect("/userSettings");
-            }}
-          />
+          <Link to={"/userSettings"} className="userSettingsIcon_link">
+            <MdOutlineSettings className="userSettingsIcon_icon" />
+          </Link>
         </div>
       </div>
     </header>
