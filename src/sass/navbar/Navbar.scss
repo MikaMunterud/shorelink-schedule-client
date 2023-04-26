@@ -45,6 +45,9 @@
     & .userSettingsIcon {
       display: flex;
       cursor: pointer;
+      &_link {
+        color: inherit;
+      }
       &_icon {
         position: absolute;
         top: 50%;
