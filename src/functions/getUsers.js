@@ -9,7 +9,7 @@ export async function getUsers() {
     );
 
     if (response.status === 400) {
-      return { loggedIn: false };
+      return { loggedIn: null };
     }
 
     if (response.status === 401) {
