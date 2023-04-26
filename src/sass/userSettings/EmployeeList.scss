@@ -11,8 +11,10 @@
   &_employee {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     gap: 32px;
+    width: 100%;
 
     &_name {
       display: flex;
