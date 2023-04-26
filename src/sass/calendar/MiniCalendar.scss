@@ -5,7 +5,7 @@
   width: 60%;
   min-width: 450px;
   @media only screen and (max-width: 700px) {
-    width: 100vw;
+    width: 100%;
     min-width: fit-content !important;
   }
 
@@ -45,7 +45,7 @@
     visibility: hidden;
     transition: all 0.5s ease-in-out;
     @media only screen and (max-width: 700px) {
-      width: calc(100vw - 64px);
+      width: 100vw;
     }
     &.visible {
       opacity: 1;
