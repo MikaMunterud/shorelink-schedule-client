@@ -73,13 +73,13 @@ export default function UserForm({
 
             {inputType2 === "password" ? (
               <BsFillEyeFill
-                onMouseDown={function () {
+                onClick={function () {
                   setInputType2("text");
                 }}
               />
             ) : (
               <BsFillEyeSlashFill
-                onMouseUp={function () {
+                onClick={function () {
                   setInputType2("password");
                 }}
               />
