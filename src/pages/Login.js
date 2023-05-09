@@ -46,6 +46,7 @@ export default function Login() {
 
       if (response.status === 200) {
         localStorage.setItem("loggedInUser", responseMessage);
+        localStorage.setItem("firstTimeVisit", false);
         setIsLoggedIn(true);
         navigate("/oneMonthSchedule");
         return;
