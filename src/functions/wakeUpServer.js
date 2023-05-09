@@ -10,7 +10,7 @@ export async function wakeUpServer() {
     if (!localStorage.getItem("firstTimeVisit")) {
       return await Swal.fire(
         "Denna sida använder cookies 🍪",
-        "För att använda sidans alla funktion se till att ändra din webbläsares inställningar till att tillåta cookies och spårning mellan webbplatser.",
+        "För att använda sidans alla funktioner se till att ändra din webbläsares inställningar till att tillåta cookies och spårning mellan webbplatser.",
         "info"
       );
     }
