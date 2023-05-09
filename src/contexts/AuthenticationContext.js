@@ -1,8 +1,10 @@
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 export const AuthenticationContext = createContext();
 export function AuthenticationProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState();
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(function () {
     async function checkLoggedIn() {
@@ -15,27 +17,20 @@ export function AuthenticationProvider({ children }) {
           }
         );
 
-        if (response.status === 401) {
-          localStorage.removeItem("loggedInUser");
-          setIsLoggedIn(false);
-          setLoading(false);
-          return;
-        }
-
-        if (response.status === 400) {
-          localStorage.removeItem("loggedInUser");
-          setIsLoggedIn(false);
-          setLoading(false);
-          return;
-        }
-
         if (response.status === 200) {
           const username = await response.text();
           localStorage.setItem("loggedInUser", username);
           setIsLoggedIn(true);
           setLoading(false);
+          navigate("/oneMonthSchedule");
           return;
         }
+
+        localStorage.removeItem("loggedInUser");
+        setIsLoggedIn(false);
+        setLoading(false);
+        navigate("/");
+        return;
       } catch (FetchError) {
         setIsLoggedIn("serverError");
         setLoading(false);
