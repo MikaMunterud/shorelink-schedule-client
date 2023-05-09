@@ -16,12 +16,12 @@ function App() {
   wakeUpServer();
 
   return (
-    <AuthenticationProvider>
-      <GlobalProvider>
-        <OriginalWorkerProvider>
-          <WorkerProvider>
-            <ScheduleProvider>
-              <BrowserRouter>
+    <BrowserRouter>
+      <AuthenticationProvider>
+        <GlobalProvider>
+          <OriginalWorkerProvider>
+            <WorkerProvider>
+              <ScheduleProvider>
                 <NavBar />
                 <Routes>
                   <Route path="/" element={<Login />} />
@@ -35,12 +35,12 @@ function App() {
                   />
                   <Route path="/userSettings" element={<UserSettings />} />
                 </Routes>
-              </BrowserRouter>
-            </ScheduleProvider>
-          </WorkerProvider>
-        </OriginalWorkerProvider>
-      </GlobalProvider>
-    </AuthenticationProvider>
+              </ScheduleProvider>
+            </WorkerProvider>
+          </OriginalWorkerProvider>
+        </GlobalProvider>
+      </AuthenticationProvider>
+    </BrowserRouter>
   );
 }
 
